@@ -1,11 +1,7 @@
 require 'middleman-core'
+require 'middleman-cloudflare_purge/commands'
 
-class CloudflarePurge < Middleman::Extension
-    option :force, false, 'Force a full purge'
-
-    def initialize(app, options_hash={}, &block)
-        super
-    end
+::Middleman::Extensions.register(:cloudflare_purge) do
+    require 'middleman-cloudflare_purge/extension'
+    ::Middleman::CloudflarePurge
 end
-
-::Middleman::Extensions.register(:cloudflare_purge, CloudflarePurge)
