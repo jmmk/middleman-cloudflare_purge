@@ -14,15 +14,11 @@ module Middleman
                 true
             end
 
-            desc 'cloudflare_purge [--all]', 'Purges files from the Cloudflare cache. By default only purges updated files.'
-            method_option :all,
-                type: :boolean,
-                desc: 'Purge ALL files from Cloudflare cache'
-
+            desc 'cloudflare_purge', 'Purges all files from the Cloudflare cache'
             def cloudflare_purge
                 shared_inst = ::Middleman::Application.server.inst
 
-                if shared_inst.respond_to? :cloudflare_purge_options
+                if shared_inst.respond_to? :cloudflare_purge_activated
                     ::Middleman::CloudflarePurge.purge(options)
                 else
                     raise Thor::Error.new 'You need to activate the cloudflare_purge extension in config.rb'

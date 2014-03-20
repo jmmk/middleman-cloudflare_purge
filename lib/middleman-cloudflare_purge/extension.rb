@@ -46,37 +46,24 @@ module Middleman
                 params = {
                     tkn: options.token,
                     email: options.email,
-                    z: options.domain
+                    z: options.domain,
+                    a: 'fpurge_ts',
+                    v: 1
                 }
-                puts options.token
-                puts options.email
-                puts options.domain
-
-                if opts[:all]
-                    params[:a] = 'fpurge_ts'
-                    params[:v] = 1
-                else
-                    params[:a] = 'zone_file_purge'
-                    params[:url]
-                end
 
                 res = Net::HTTP.post_form(uri, params)
-                if res.code == 200
-                    body = JSON.parse(res.body)
+                body = JSON.parse(res.body)
 
-                    if body['result'] == 'success'
-                        puts 'Success!'
-                    else
-                        abort body['msg'] + "\nCheck your configuration settings."
-                    end
+                if body['result'] == 'success'
+                    puts 'Success!'
                 else
-                    abort "Couldn't connect to Cloudflare"
+                    abort body['msg']
                 end
             end
 
             module Helpers
-                def cloudflare_purge_options
-                    ::Middleman::CloudflarePurge.options
+                def cloudflare_purge_activated
+                    true
                 end
             end
         end

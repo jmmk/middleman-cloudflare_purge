@@ -3,8 +3,8 @@ Gem::Specification.new do |gem|
     gem.version = '0.0.5'
     gem.authors = ['Michael McLellan']
     gem.email = 'jmikem825@gmail.com'
-    gem.description = 'Purge updated files from your Cloudflare cache'
-    gem.summary = 'Cloudflare cache purging for Middleman'
+    gem.description = 'Cloudflare cache purging for Middleman'
+    gem.summary = 'Purge files from your Cloudflare cache'
     gem.homepage = 'https://github.com/jmmk/middleman-cloudflare_purge'
     gem.license = 'MIT'
 
