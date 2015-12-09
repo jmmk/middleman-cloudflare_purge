@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install middleman-s3_sync
+    $ gem install middleman-cloudflare_purge
 
 ## Usage
 
